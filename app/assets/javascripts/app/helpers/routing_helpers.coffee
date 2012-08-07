@@ -1,5 +1,5 @@
-window.categoryPath = (model) ->
-  "/" + model.category.toLowerCase()
+window.storePath = (model) ->
+  "/" + model.store
 
 window.productsPath = (model) ->
   if model

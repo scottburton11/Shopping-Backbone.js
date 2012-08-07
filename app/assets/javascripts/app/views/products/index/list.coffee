@@ -4,9 +4,9 @@ App.Views.Products.Index.List = class List extends Backbone.View
     @collection.on "reset", @addAll
     @collection.on "add", @addOne
 
-  render: (category) ->
-    @blankSlate(category)
-    @collection.changeCategory(category)
+  render: (store) ->
+    @blankSlate(store)
+    @collection.changeStore(store)
     @
 
   addAll: =>
@@ -17,6 +17,6 @@ App.Views.Products.Index.List = class List extends Backbone.View
     @$el.append(new App.Views.Products.Index.Item(model: item).render().el)
     @trigger "added", item
 
-  blankSlate: (category) ->
+  blankSlate: (store) ->
     @$el.empty() # unbind existing DOM events
-    @$el.append JST["app/templates/products/index/placcard"](category: category)
+    @$el.append JST["app/templates/products/index/placcard"](store: store)

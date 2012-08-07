@@ -15,11 +15,11 @@ App.Views.Products.Index.Main = class Main extends Backbone.View
   deactivate: ->
     @$el.removeClass("active")
 
-  show: (category) =>
-    category = category or "MEN"
-    unless @category is category
-      @category = category
-      @list.render(@category)
+  show: (store) =>
+    store = store or "men"
+    unless @store is store
+      @store = store
+      @list.render(@store)
     @stack.activate @
 
   setupWaypoint: =>

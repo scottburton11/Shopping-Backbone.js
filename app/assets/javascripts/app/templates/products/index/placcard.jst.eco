@@ -1,1 +1,1 @@
-<div class='item placcard'><h1><%= @category.titleize() %></h1></div>
+<div class='item placcard'><h1><%= @store.titleize() %></h1></div>

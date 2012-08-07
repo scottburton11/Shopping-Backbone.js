@@ -19,7 +19,9 @@ $ ->
   App.main.setElement($("#main"))
   App.main.render()
 
-  App.cart   = new App.Collections.Cart
+  App.cart   = new App.Views.Cart(el: $("#cart-wrap"))
+  App.cart.render()
+
   App.nav    = new App.Views.Nav(el: $(".nav"))
   App.router = new App.Router
 

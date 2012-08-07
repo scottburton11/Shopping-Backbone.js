@@ -4,18 +4,18 @@ App.Views.Products.Show.Detail = class Detail extends Backbone.View
     "click button": "addToCart"
 
   initialize: ->
-    window.cart.on "add", @handleButtonState
+    window.cart.collection.on "add", @handleButtonState
     
-  render: ->
-    @$el.html JST["app/templates/products/show/detail"](@model.toJSON())
+  render: =>
+    @$el.html JST["app/templates/products/show/detail"](@model.viewAttributes())
     @handleButtonState()
     @
 
   addToCart: (e) =>
-    window.cart.add @model
+    window.cart.collection.add @model
 
   handleButtonState: =>
-    if window.cart.get @model.id
+    if window.cart.collection.get @model.id
       @$("button").attr "disabled", "disabled"
       @$("button").addClass "disabled"
     else
@@ -24,5 +24,5 @@ App.Views.Products.Show.Detail = class Detail extends Backbone.View
 
 
   release: ->
-    window.cart.off "add", @handleButtonState
+    window.cart.collection.off "add", @handleButtonState
     @remove()

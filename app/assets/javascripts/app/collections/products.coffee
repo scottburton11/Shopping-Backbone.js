@@ -3,14 +3,14 @@ App.Collections.Products = class Products extends Backbone.Collection
   url: "/products"
   next_page: 1
   per_page: 20
-  category: "MEN"
+  store: "men"
 
   calculatePerPage: ->
     if @next_page is 1 then 19 else 20
 
-  changeCategory: (category) ->
+  changeStore: (store) ->
     @next_page = 1
-    @category = category.toUpperCase()
+    @store = store
     @nextPage(add: false)
 
   nextPage: (options) =>
@@ -21,7 +21,7 @@ App.Collections.Products = class Products extends Backbone.Collection
       data: 
         page:     @next_page
         per_page: @calculatePerPage()
-        category: @category
+        store: @store
       add: options.add
 
   parse: (data, xhr) ->
@@ -37,6 +37,5 @@ App.Collections.Products = class Products extends Backbone.Collection
 
   hasMorePages: ->
     @page < @total_pages
-
 
 window.Products = App.Collections.Products

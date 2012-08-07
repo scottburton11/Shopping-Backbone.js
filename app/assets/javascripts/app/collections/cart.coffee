@@ -1,11 +1,7 @@
 App.Collections.Cart = class Cart extends Backbone.Collection
 
-  # initialize: ->
-  #   @items = []
+  totalPrice: ->
+    cents = _.reduce @models, @sumPrice, 0
 
-  # add: (id) ->
-  #   @items.push id
-  #   @trigger "add", @items
-
-  # contains: (id) ->
-  #   id in @items
+  sumPrice: (memo, model) ->
+    memo + model.get("price_cents") 
