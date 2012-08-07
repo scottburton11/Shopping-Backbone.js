@@ -18,9 +18,11 @@ App.Views.Products.Show.Detail = class Detail extends Backbone.View
     if window.cart.collection.get @model.id
       @$("button").attr "disabled", "disabled"
       @$("button").addClass "disabled"
+      @$("button").text "In cart"
     else
       @$("button").removeAttr "disabled"
       @$("button").removeClass "disabled"
+      @$("button").text "Add to cart"
 
 
   release: ->
